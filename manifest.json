@@ -1,0 +1,10 @@
+{
+  "id": "privacy-toggle-view",
+  "name": "Privacy Toggle View",
+  "version": "1.0.0",
+  "minAppVersion": "1.1.0",
+  "description": "Blendet standardmäßig alle Dateinamen und Inhalte aus und zeigt nur die aktuell aktive Datei auf Knopfdruck an.",
+  "author": "ChatGPT",
+  "authorUrl": "https://chat.openai.com",
+  "isDesktopOnly": false
+}

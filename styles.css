@@ -1,0 +1,48 @@
+
+/* Global privacy mode: only blur note content and tab title, not sidebars */
+
+body.privacy-mode .workspace-leaf-content .view-content,
+body.privacy-mode .workspace-leaf-content .markdown-preview-view,
+body.privacy-mode .workspace-leaf-content .markdown-source-view,
+body.privacy-mode .workspace-tab-header-inner-title {
+    filter: blur(6px);
+    text-shadow: 0 0 8px var(--text-normal);
+}
+
+/* Blur file navigator/explorer when not focused */
+body.privacy-mode .nav-files-container,
+body.privacy-mode .nav-folder-title-content,
+body.privacy-mode .nav-file-title-content {
+    filter: blur(6px);
+    text-shadow: 0 0 8px var(--text-normal);
+}
+
+/* Unblur navigator when focused (tracked by JavaScript) */
+body.privacy-mode.navigator-focused .nav-files-container,
+body.privacy-mode.navigator-focused .nav-folder-title-content,
+body.privacy-mode.navigator-focused .nav-file-title-content {
+    filter: none !important;
+    text-shadow: none !important;
+}
+
+/* Statusbar, Ribbon etc. nicht unscharf machen */
+body.privacy-mode .status-bar,
+body.privacy-mode .side-dock-ribbon,
+body.privacy-mode .side-dock-actions,
+body.privacy-mode .workspace-ribbon {
+    filter: none !important;
+    text-shadow: none !important;
+}
+
+/* Wenn freigegeben: nur aktive Note sichtbar machen */
+body.privacy-mode.privacy-revealed .workspace-leaf.mod-active .view-content,
+body.privacy-mode.privacy-revealed .workspace-leaf.mod-active .view-content * {
+    filter: none !important;
+    text-shadow: none !important;
+}
+
+/* Aktiver Tab-Titel sichtbar */
+body.privacy-mode.privacy-revealed .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+    filter: none !important;
+    text-shadow: none !important;
+}
