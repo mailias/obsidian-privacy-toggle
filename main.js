@@ -7,9 +7,11 @@ class PrivacyTogglePlugin extends obsidian.Plugin {
     async onload() {
         console.log('Loading Privacy Toggle View plugin');
         this.revealed = false;
+        this.sidebarsBlurred = true; // Sidebars blurred by default
 
         // Activate privacy mode
         document.body.classList.add('privacy-mode');
+        document.body.classList.add('sidebars-blurred');
         document.body.classList.remove('privacy-revealed');
 
         // Keep classes in sync when active leaf changes
@@ -25,12 +27,33 @@ class PrivacyTogglePlugin extends obsidian.Plugin {
             this.toggleReveal();
         });
 
-        // Command palette
+        // Command palette with keyboard shortcut
         this.addCommand({
             id: 'toggle-privacy-visibility',
             name: 'Aktive Notiz ein-/ausblenden',
+            hotkeys: [
+                {
+                    modifiers: ['Mod', 'Shift'],
+                    key: 'b'
+                }
+            ],
             callback: () => {
                 this.toggleReveal();
+            }
+        });
+
+        // Command to toggle sidebar blur
+        this.addCommand({
+            id: 'toggle-sidebar-blur',
+            name: 'Sidebar ein-/ausblenden',
+            hotkeys: [
+                {
+                    modifiers: ['Mod', 'Shift'],
+                    key: 's'
+                }
+            ],
+            callback: () => {
+                this.toggleSidebarBlur();
             }
         });
     }
@@ -38,6 +61,8 @@ class PrivacyTogglePlugin extends obsidian.Plugin {
     onunload() {
         document.body.classList.remove('privacy-mode');
         document.body.classList.remove('privacy-revealed');
+        document.body.classList.remove('sidebars-blurred');
+        document.body.classList.remove('navigator-focused');
     }
 
     toggleReveal() {
@@ -54,6 +79,18 @@ class PrivacyTogglePlugin extends obsidian.Plugin {
         } else {
             document.body.classList.remove('privacy-revealed');
         }
+    }
+
+    toggleSidebarBlur() {
+        this.sidebarsBlurred = !this.sidebarsBlurred;
+        if (this.sidebarsBlurred) {
+            document.body.classList.add('sidebars-blurred');
+        } else {
+            document.body.classList.remove('sidebars-blurred');
+        }
+        new obsidian.Notice(this.sidebarsBlurred
+            ? 'Sidebar ausgeblendet'
+            : 'Sidebar eingeblendet');
     }
 
     setupNavigatorFocusTracking() {

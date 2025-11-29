@@ -9,18 +9,18 @@ body.privacy-mode .workspace-tab-header-inner-title {
     text-shadow: 0 0 8px var(--text-normal);
 }
 
-/* Blur file navigator/explorer when not focused */
-body.privacy-mode .nav-files-container,
-body.privacy-mode .nav-folder-title-content,
-body.privacy-mode .nav-file-title-content {
+/* Blur file navigator/explorer when sidebars are set to blur and not focused */
+body.privacy-mode.sidebars-blurred .nav-files-container,
+body.privacy-mode.sidebars-blurred .nav-folder-title-content,
+body.privacy-mode.sidebars-blurred .nav-file-title-content {
     filter: blur(6px);
     text-shadow: 0 0 8px var(--text-normal);
 }
 
 /* Unblur navigator when focused (tracked by JavaScript) */
-body.privacy-mode.navigator-focused .nav-files-container,
-body.privacy-mode.navigator-focused .nav-folder-title-content,
-body.privacy-mode.navigator-focused .nav-file-title-content {
+body.privacy-mode.sidebars-blurred.navigator-focused .nav-files-container,
+body.privacy-mode.sidebars-blurred.navigator-focused .nav-folder-title-content,
+body.privacy-mode.sidebars-blurred.navigator-focused .nav-file-title-content {
     filter: none !important;
     text-shadow: none !important;
 }
