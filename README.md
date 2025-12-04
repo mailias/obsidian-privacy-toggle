@@ -2,6 +2,13 @@
 
 An Obsidian plugin that helps protect your privacy by blurring.
 
+
+## Open TODOs
+
+- [ ] convert to setup via build (see https://github.com/obsidianmd/obsidian-sample-plugin)
+- [ ] add unit tests
+
+
 ## Features
 
 - **Toggle blur with shortcut**
